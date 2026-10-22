@@ -1,0 +1,18 @@
+# build / tooling artifacts
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+
+# sample banks: never commit (likely copyrighted commercial soundsets).
+# the whole folder is ignored except its README.
+samples/*
+!samples/README.md
+
+# generated output
+out/
