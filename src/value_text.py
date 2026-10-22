@@ -73,9 +73,11 @@ class ValueFormatter:
         """text -> index for a value table (first occurrence wins on duplicates)."""
         if key not in self._reverse:
             rv = {}
-            for i, entry in enumerate(self.lists.get(key, [])):
+            lst = self.lists.get(key, [])
+            items = lst.items() if isinstance(lst, dict) else enumerate(lst)
+            for i, entry in items:
                 norm = str(entry).strip().lower()
-                rv.setdefault(norm, i)   # first occurrence wins
+                rv.setdefault(norm, int(i))   # first occurrence wins
             self._reverse[key] = rv
         return self._reverse[key]
 
@@ -108,6 +110,8 @@ class ValueFormatter:
                               "biPolarPercent", "unipolarPercent", "unsignedZero"):
             return None
         # only offer genuine enums (short tables) as choices
+        if isinstance(lst, dict):
+            return [str(e).strip() for e in lst.values()] if len(lst) <= 32 else None
         if lst and len(lst) <= 32:
             return [str(e).strip() for e in lst]
         return None
@@ -118,6 +122,9 @@ class ValueFormatter:
         if not key or key == "ascii":
             return None
         lst = self.lists.get(key)
+        if isinstance(lst, dict):
+            v = lst.get(str(raw))
+            return str(v).strip() if v is not None else None
         if lst and 0 <= raw < len(lst):
             return str(lst[raw]).strip()
         return None
