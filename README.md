@@ -39,7 +39,9 @@ Message layout: `F0 00 20 33 01 <dev> 10 <bank> <prog>  <data…>  <chk> F7`
 - Full byte→parameter map comes from the gearmulator JSON (see [`reference/`](reference/)),
   cross-checked against ~1000 real patches.
 
-The complete specification is in [docs/format.md](docs/format.md).
+The complete specification is in [docs/format.md](docs/format.md); a browsable table of
+every byte position (e.g. `Cutoff` = data offset 40) is in
+[docs/parameter-map.md](docs/parameter-map.md).
 
 ## Usage
 

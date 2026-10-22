@@ -68,7 +68,9 @@ dump as a list with **one entry per message byte**:
 - `singledump_C` → **classic, 267 B** (data bytes `msg[9..264]`)
 
 Every data byte is thus directly mapped to a named parameter — no page guesswork needed.
-Loader: [`src/dump_layout.py`](../src/dump_layout.py).
+Loader: [`src/dump_layout.py`](../src/dump_layout.py). A ready-made, browsable table of every
+byte position (e.g. Cutoff = msg 49 / data 40) is in [`parameter-map.md`](parameter-map.md)
+(regenerate with `python3 -I src/dump_layout.py`).
 
 **Verification against 630 real TI dumps:** enum consistency **83/85 (97.6 %)**
 (the 2 deviations harmless: "Delay Clock" 0..17 instead of 0..16; one always-0 default).

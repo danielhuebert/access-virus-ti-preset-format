@@ -13,9 +13,11 @@ checksum, null, f7.
 """
 import os
 import re
+import sys
 import json
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
 TI_JSON = os.path.join(HERE, "..", "reference", "parameterDescriptions_TI.json")
 
 from load_param_descriptions import _clean_jsonc, load_descriptions  # noqa: E402
